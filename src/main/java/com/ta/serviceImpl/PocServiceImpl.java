@@ -1,6 +1,7 @@
 package com.ta.serviceImpl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,6 +28,11 @@ public class PocServiceImpl implements PocService {
 	@Override
 	public void deleteDetails(Long id) {
        pocRepo.deleteById(id);	
+	}
+
+	@Override
+	public Optional<PocModel> getDetail(Long id) {
+		return pocRepo.findById(id);
 	}
 
 }
