@@ -4,6 +4,8 @@ package com.ta;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.junit.jupiter.api.Order;
@@ -35,6 +37,19 @@ class PocApplicationTests {
 		poc.setUserName("ajith");
 		when(pocRepo.findById(Mockito.anyLong())).thenReturn(Optional.of(poc));
 		pocservice.getDetail(poc.getTrainerId());
+		assertTrue(true);
+	}
+	
+	@Test
+	public void getDetailsAll() {
+		PocModel poc =new PocModel();
+		poc.setPassword("sadf");
+		poc.setTrainerId(1L);
+		poc.setUserName("ajith");
+		List<PocModel> pocmodel = new ArrayList<>();
+		pocmodel.add(poc);
+		when(pocRepo.findAll()).thenReturn(pocmodel);
+		pocservice.getDetails();
 		assertTrue(true);
 	}
 	
