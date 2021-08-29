@@ -2,13 +2,13 @@ package com.ta;
 
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -61,6 +61,19 @@ class PocApplicationTests {
 		poc.setUserName("ajith");
 		when(pocRepo.save(Mockito.any())).thenReturn(poc);
 		pocservice.addDetails(poc);
+		assertTrue(true);
+		
+		
+	}
+	
+	@Test
+	public void delete() {
+		PocModel poc =new PocModel();
+		poc.setPassword("sadf");
+		poc.setTrainerId(1L);
+		poc.setUserName("ajith");
+		doNothing().when(pocRepo).deleteById(Mockito.anyLong());
+		pocservice.deleteDetails(poc.getTrainerId());
 		assertTrue(true);
 		
 		
