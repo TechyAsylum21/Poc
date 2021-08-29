@@ -10,4 +10,6 @@ public interface PocService {
 
 	PocModel addDetails(PocModel pocModel);
 
+	void deleteDetails(Long id);
+
 }

@@ -21,8 +21,12 @@ public class PocServiceImpl implements PocService {
 
 	@Override
 	public PocModel addDetails(PocModel pocModel) {
-		// TODO Auto-generated method stub
 		return pocRepo.save(pocModel);
+	}
+
+	@Override
+	public void deleteDetails(Long id) {
+       pocRepo.deleteById(id);	
 	}
 
 }

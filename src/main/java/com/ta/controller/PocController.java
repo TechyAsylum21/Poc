@@ -3,7 +3,9 @@ package com.ta.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,5 +29,12 @@ public class PocController {
 	public PocModel addTrainerDetails(@RequestBody PocModel pocModel) {
 
 		return pocService.addDetails(pocModel);
+	}
+	
+	@DeleteMapping("/v1/deleteDetails/{id}")
+	public String deleteDetails(@PathVariable Long id) {
+		pocService.deleteDetails(id);
+		return "trainer details deleted";
+
 	}
 }
