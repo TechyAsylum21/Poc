@@ -73,10 +73,8 @@ class PocApplicationTests {
 		poc.setTrainerId(1L);
 		poc.setUserName("ajith");
 		doNothing().when(pocRepo).deleteById(Mockito.anyLong());
-		pocservice.deleteDetails(poc.getTrainerId());
-		assertTrue(true);
-		
-		
+		pocservice.deleteDetails(Mockito.anyLong());
+		assertTrue(false);
 	}
 
 }
