@@ -10,14 +10,19 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.ta.model.PocModel;
 import com.ta.repository.PocRepository;
+import com.ta.service.PocService;
 
 @SpringBootTest
 class PocApplicationTests {
 
+	@Autowired
+	public PocService pocservice;
+	
 	
 	@Mock
 	public PocRepository pocRepo;
@@ -29,7 +34,7 @@ class PocApplicationTests {
 		poc.setTrainerId(1L);
 		poc.setUserName("ajith");
 		when(pocRepo.findById(Mockito.anyLong())).thenReturn(Optional.of(poc));
-		pocRepo.findById(2L);
+		pocservice.getDetail(poc.getTrainerId());
 		assertTrue(true);
 	}
 	
@@ -40,7 +45,7 @@ class PocApplicationTests {
 		poc.setTrainerId(1L);
 		poc.setUserName("ajith");
 		when(pocRepo.save(Mockito.any())).thenReturn(poc);
-		pocRepo.save(poc);
+		pocservice.addDetails(poc);
 		assertTrue(true);
 		
 		
